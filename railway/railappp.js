@@ -1,8 +1,29 @@
-var modd=angular.module('railappp',['ngRoute','railservice']);
+var modd=angular.module('railappp',[]);
+modd.controller('RailCtrl',function($scope,$routeParams){
+	$scope.setActive=function(type)
+	{
+		$scope.destinationActive='';
+		$scope.trainActive='';
+		$scope.reservationActive='';
+		$scope[type+'Active']='active';
+	}
+});
 modd.config(function($routeProvider)
 {
-	
-});
-modd.controller('RailCtrl',function($scope,Station){
-	
+	$routeProvider
+		.when("/",{
+			templateUrl:'destination.html',
+			controller:function($scope)
+			{
+				$scope.setActive('destination');
+			}
+		})
+		.when("/train",{
+			templateUrl:'train.html',
+			controller:'TrainCtrl'
+		})
+		.when('reservation',{
+			templateUrl:'reservation.html',
+			controller:'ReservationCtrl'
+		})
 });

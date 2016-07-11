@@ -1,0 +1,33 @@
+<h3>Search for Trains</h3>
+<div class="controls controls-row">
+	<input type="text" class="input-small" placeholder="origin" ng-model="search.origin"/>
+	<input type="text" class="input-small" placeholder="destination" ng-model="search.destination"/>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Source</th>
+			<th>Destination</th>
+			<th>Code</th>
+			<th>PNR</th>
+			<th>Price</th>
+			<th>Tickets Left</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr>
+	<td>
+		<tr ng-repeat="train in trains | filter:search">
+			<td>{{train.name}}</td>
+			<td>{{train.source}}</td>
+			<td>{{train.destination}}</td>
+			<td>{{train.code}}</td>
+			<td>{{train.PNR}}</td>
+			<td>{{train.tickets}}</td>
+			<td>{{train.price | currency}}</td>
+			<td><button type="button" class="btn btn-primary" ng-click="reserve({{train.code}},{{train.name}},{{train.source}},{{train.destination}},{{train.}})">Reserve</button></td>
+		</tr>
+	</tbody>
+</table>
